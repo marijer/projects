@@ -2,7 +2,8 @@
 	<ul class="item-list">
 		<li ng-repeat="item in model.list"
 			class="item">
-			<span>{{item.name}}</span>
+			<img class="item-img" ng-src="components/overview-list/img/{{item.img}}">
+			<div class="item-name">{{item.name}}</div>
 		</li>
 	</ul>
 </div>
