@@ -1,9 +1,12 @@
 <div class="items-wrapper">
+<a ng-link="[model.refugeesPath]">test</a>
+
 	<ul class="item-list">
 		<li ng-repeat="item in model.list"
 			class="item">
 			<img class="item-img" ng-src="components/overview-list/img/{{item.img}}">
 			<div class="item-name">{{item.name}}</div>
+			<a ng-link="[item.path]">test</a>
 		</li>
 	</ul>
 </div>

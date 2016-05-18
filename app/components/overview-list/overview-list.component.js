@@ -13,6 +13,8 @@
 	function controller($http) {
 		var model = this;
 
+		model.refugeesPath = 'Refugees-barchart';
+
 		model.$onInit = function() {
 			fetchItems($http).then(function(items){
 				model.list = items;
@@ -20,7 +22,7 @@
 		}
 	}
 
-	module.component("overviewList", {
+	module.component('overviewList', {
 		templateUrl: 'components/overview-list/overview-list.template.html',
 		controller: ['$http', controller],
 		controllerAs: 'model'
