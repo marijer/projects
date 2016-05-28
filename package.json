@@ -15,9 +15,12 @@
     "jasmine": "^2.4.1",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^1.0.1",
-    "karma-jasmine": "^1.0.2"
+    "karma-jasmine": "^1.0.2",
+    "traceur": "0.0.110"
   },
   "dependencies": {
-    "@angular/router": "^0.2.0"
+    "@angular/router": "^0.2.0",
+    "d3": "^3.5.17",
+    "systemjs": "^0.19.28"
   }
 }

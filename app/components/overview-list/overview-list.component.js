@@ -1,30 +1,26 @@
-(function() {
-	"use strict";
+function fetchItems($http) {
+	return $http.get('components/overview-list/d3-list.json')
+				.then(function(response){
+					return response.data;
+		})
+}
 
-	var module = angular.module('d3Assignments');
+function controller($http) {
+	var model = this;
 
-	function fetchItems($http) {
-		return $http.get('components/overview-list/d3-list.json')
-					.then(function(response){
-						return response.data;
-			})
+	model.refugeesPath = 'Refugees-barchart';
+
+	model.$onInit = function() {
+		fetchItems($http).then(function(items){
+			model.list = items;
+		})
 	}
+}
 
-	function controller($http) {
-		var model = this;
+var OverviewList = {
+	templateUrl: 'components/overview-list/overview-list.template.html',
+	controller: ['$http', controller],
+	controllerAs: 'model'
+};
 
-		model.refugeesPath = 'Refugees-barchart';
-
-		model.$onInit = function() {
-			fetchItems($http).then(function(items){
-				model.list = items;
-			})
-		}
-	}
-
-	module.component('overviewList', {
-		templateUrl: 'components/overview-list/overview-list.template.html',
-		controller: ['$http', controller],
-		controllerAs: 'model'
-	});
-})();
+export default OverviewList;

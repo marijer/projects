@@ -1,16 +1,6 @@
-(function() {
-	'use strict';
+import angular from 'angular';
+import 'components/d3-app/d3-app.component.js';
 
-	var module = angular.module('d3Assignments', ['ngComponentRouter']);
-
-	module.value("$routerRootComponent", "d3App");
-
-	module.component('appAbout', {
-		template: 'this is an about page'
-	})
-
-	module.component('refugeesBarchart', {
-		template: 'this is a page for the refugees'
-	})
-
-})();
+angular.element(document).ready(function() {  
+  angular.bootstrap(document, ['d3Assignments']);
+});

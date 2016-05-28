@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="d3Assignments">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>D3 assignments</title>
@@ -10,11 +10,11 @@
 
 	<d3-app></d3-app>
 
-	<script type="text/javascript" src="../node_modules/angular/angular.js"></script>
-	<script type="text/javascript" src="../node_modules/@angular/router/angular1/angular_1_router.js"></script>
-	<script type="text/javascript" src="app.js"></script>
-	<script type="text/javascript" src="components/overview-list/overview-list.component.js"></script>
-	<script type="text/javascript" src="components/d3-app/d3-app.component.js"></script>
+	<script type="text/javascript" src="../node_modules/systemjs/dist/system.js"></script>
+	<script type="text/javascript" src="system.config.js"></script>
 
+	<script>
+		System.import('app.js');
+	</script>
 </body>
 </html>

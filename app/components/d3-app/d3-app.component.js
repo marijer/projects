@@ -1,15 +1,22 @@
-(function() {
-	'use strict';
+import angular from 'angular';
+import ngComponentRouter from 'ngComponentRouter';
+import OverviewList from '../overview-list/overview-list.component.js';
+import Barchart from '../barchart/barchart.component.js';
 
-	var module = angular.module('d3Assignments');
+var module = angular.module('d3Assignments', ['ngComponentRouter']);
 
-	module.component('d3App', {
-		templateUrl: 'components/d3-app/d3-app.template.html',
-		$routeConfig: [
-			{ path: '/', component: 'overviewList', name: 'Home' },
-			{ path: '/about', component: 'appAbout', name: 'About'},
-			{ path: '/refugees', component: 'refugeesBarchart', name: 'Refugees-barchart'},
-			{ path: '/**', redirectTo: ['Home']}
-		]
-	});
-})();
+var module = angular.module('d3Assignments');
+module.value("$routerRootComponent", "d3App");
+
+module.component('d3App', {
+	templateUrl: 'components/d3-app/d3-app.template.html',
+	$routeConfig: [
+	 	{ path: '/refugees', component: 'barChart', name: 'Refugees-barchart'},
+		{ path: '/', component: 'overviewList', name: 'Home' },
+	 	{ path: '/**', redirectTo: ['Home']}
+	]
+});
+
+module
+	.component('overviewList', OverviewList)
+	.component('barChart', Barchart);
