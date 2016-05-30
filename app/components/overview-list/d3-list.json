@@ -7,11 +7,11 @@
 	{
 		"name": "Area chart",
 		"img": "refugees-areachart.jpg",
-		"path": "Refugees-barchart"
+		"path": "Refugees-areachart"
 	},
 	{
 		"name": "Where do people in the Netherlands live?",
 		"img": "netherlands-map.jpg",
-		"path": "Refugees-barchart"
+		"path": "Municipalities-mapchart"
 	}
 ]

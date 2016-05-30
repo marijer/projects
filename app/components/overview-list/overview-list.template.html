@@ -1,10 +1,10 @@
 <div class="items-wrapper">
 	<ul class="item-list">
 		<li ng-repeat="item in model.list"
-			class="item">
+			ng-link="[item.path]"
+			class="item pointer">
 			<img class="item-img" ng-src="components/overview-list/img/{{item.img}}">
 			<div class="item-name">{{item.name}}</div>
-			<a ng-link="[item.path]">test</a>
 		</li>
 	</ul>
 </div>

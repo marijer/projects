@@ -1,20 +1,35 @@
 html, body {
-	width: 100%;
-	height: 100%;
-}
-
-body {
 	margin: 0;
 	padding: 0;
-	background: #ECECEC;
-
-	font-family: Arial, Helvetica, sans-serif;
 }
+
+* { outline: none; }
+
+body {
+	font-family: Helvetiva, Arial;
+	background: #FFF;
+}
+
+h1, h2, h3 {
+	font-family: "Helvetica Neue";
+}
+
+h1 {
+	margin: 0 0 .5em;
+	padding: 0;
+    font-weight: 400;
+}
+
+.none { display: none; }
 
 ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+}
+
+.pointer {
+	cursor: pointer;
 }
 
 .header {
@@ -40,4 +55,10 @@ ul {
 	background: #FFF;
     border: 1px solid #CCC;
 	box-shadow: 1px 1px 1px #EFEFEF;
+
+	transition: border .2s linear;
+}
+
+.item:hover {
+	border-color: #B5F1FF;
 }
