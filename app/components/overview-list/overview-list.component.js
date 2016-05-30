@@ -1,5 +1,5 @@
 function fetchItems($http) {
-	return $http.get('components/overview-list/d3-list.json')
+	return $http.get('components/overview-list/assets/d3-list.json')
 				.then(function(response){
 					return response.data;
 		})
@@ -7,8 +7,6 @@ function fetchItems($http) {
 
 function controller($http) {
 	var model = this;
-
-	model.refugeesPath = 'Refugees-barchart';
 
 	model.$onInit = function() {
 		fetchItems($http).then(function(items){
@@ -20,7 +18,7 @@ function controller($http) {
 var OverviewList = {
 	templateUrl: 'components/overview-list/overview-list.template.html',
 	controller: ['$http', controller],
-	controllerAs: 'model'
+	controllerAs: 'model',
 };
 
 export default OverviewList;

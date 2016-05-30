@@ -20,21 +20,37 @@ h1 {
     font-weight: 400;
 }
 
-.none { display: none; }
-
 ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 
+a {
+	text-decoration: none;
+	color: #0068C1;
+}
+
+.none { display: none; }
+
 .pointer {
 	cursor: pointer;
 }
 
 .header {
-    height: 30px;
-    background: #4A4A4A;
+    background: #40CAFF;
+    margin-bottom: 10px;
+}
+
+.main-logo {
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.main-logo a { color: #000; }
+
+.back-home {
+    padding: 0 0 10px;
 }
 
 .container {

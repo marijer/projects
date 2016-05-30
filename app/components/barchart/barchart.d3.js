@@ -40,7 +40,7 @@ var Barchart = function() {
 		dataset;
 
 	function initChart() {
-		d3.csv("components/barchart/data_worldbank.csv", function(data) {
+		d3.csv("components/barchart/assets/data_worldbank.csv", function(data) {
 			dataset = data;
 
 		    var filtered_data = filterData(data);

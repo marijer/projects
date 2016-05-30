@@ -27,6 +27,9 @@
 
 /* BTN */
 
+.button-wrapper {
+	margin-bottom: 10px;
+}
 
 .btn {
 	padding: .7em 1.2em;
