@@ -1,4 +1,4 @@
-import Barchart from './d3-barchart.js';
+import Barchart from './barchart.d3.js';
 
 var BarChart = {
 	templateUrl: 'components/barchart/barChart.template.html',
