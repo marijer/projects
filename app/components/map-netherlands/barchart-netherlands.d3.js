@@ -1,3 +1,20 @@
+import MapNetherlands from 'components/map-netherlands/map-netherlands.d3.js';
+
+var colorRange= ['#ffffcc','#ffeda0','#fed976','#feb24c','#fd8d3c','#fc4e2a','#e31a1c','#bd0026','#800026'],
+	populationData = 'components/map-netherlands/assets/Bevolking_grootte_2014_edited.csv',
+	mapsource = "components/map-netherlands/assets/wgs84_edited.json";
+
+var color = d3.scale.quantize()
+                .range(colorRange);
+
+function setColorDomain(data) {
+    color.domain([
+        d3.min(data, function(d) { return +d.properties.bevolking2014; }),
+        d3.max(data, function(d) { return +d.properties.bevolking2014; })
+    ]);
+}
+
+
 var Barchart = {
 	width: 400,
 	height: 500,
@@ -73,12 +90,12 @@ var Barchart = {
 	            }
 			})
 			.on('mouseover', function(d) {
-				Map.mouseOver(d);
+				MapNetherlands.mouseOver(d);
 				Barchart.mouseOver(d);
 				Tooltip.set(d);
 			})
 			.on('mouseout', function(d){
-				Map.mouseOut(d);
+				MapNetherlands.mouseOut(d);
 				Barchart.mouseOut(d);
 				Tooltip.hide();	
 			})

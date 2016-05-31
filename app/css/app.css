@@ -32,6 +32,7 @@ a {
 }
 
 .none { display: none; }
+.fl-left { float: left; }
 
 .pointer {
 	cursor: pointer;

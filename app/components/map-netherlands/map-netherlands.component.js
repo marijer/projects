@@ -1,4 +1,4 @@
-import MapNetherlands from 'components/map-netherlands/map-netherlands.d3.js';
+import 'components/map-netherlands/controller-netherlands.d3.js';
 
 var MapChartComponent = {
 	templateUrl: 'components/map-netherlands/map-netherlands.template.html',

@@ -1,3 +1,7 @@
+.chartwrapper {
+    overflow: hidden;
+}
+
 /* SVG */
 .axis path,
 .axis line {
