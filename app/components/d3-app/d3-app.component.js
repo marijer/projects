@@ -5,6 +5,7 @@ import OverviewList from '../overview-list/overview-list.component.js';
 import Barchart from '../barchart/barchart.component.js';
 import Areachart from '../areachart/areachart.component.js';
 import Mapchart from '../map-netherlands/map-netherlands.component.js';
+import Tooltip from '../tooltip/tooltip.component.js';
 
 var module = angular.module('d3Assignments', ['ngComponentRouter']);
 
@@ -26,5 +27,6 @@ module
 	.component('overviewList', OverviewList)
 	.component('barChart', Barchart)
 	.component('areaChart', Areachart)
-	.component('mapChart', Mapchart);
+	.component('mapChart', Mapchart)
+	.component('tooltip', Tooltip)
 

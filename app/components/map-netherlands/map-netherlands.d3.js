@@ -1,4 +1,5 @@
 import Barchart from 'components/map-netherlands/barchart-netherlands.d3.js';
+import d3 from 'd3';
 
 var projection = d3.geo.mercator().scale(1).translate([0,0]).precision(0);
 var path = d3.geo.path().projection(projection);
@@ -15,13 +16,14 @@ function setColorDomain(data) {
 }
 
 var MapNetherlands = {
-	svg: undefined,
+ 	svg: undefined,
 	width: 530,
 	height: 500,
 	orig_geo_data: undefined,
 	html_hook: '#country-hook',
+	dispatch: d3.dispatch("mouseover", "mouseout"),
 
-	initSvg: function() {
+	renderSvg: function() {
 		MapNetherlands.svg = d3.select(MapNetherlands.html_hook)
 						.append('svg')
 						.attr('width', MapNetherlands.width)
@@ -29,7 +31,7 @@ var MapNetherlands = {
 	},
 
 	init: function(geo_data) {
-		MapNetherlands.initSvg();
+		MapNetherlands.renderSvg();
 
 		var bounds = path.bounds(MapNetherlands.orig_geo_data);
 
@@ -63,14 +65,10 @@ var MapNetherlands = {
 				class: function(d) { return 'gemeente ' + d.properties.GM_CODE; }
 	          })
 			.on('mouseover', function(d) {
-	            Barchart.mouseOver(d);
-	            MapNetherlands.mouseOver(d);
-	            Tooltip.set(d);
+				MapNetherlands.dispatch.mouseover(d);
 			})
 			.on('mouseout', function(d) {
-				MapNetherlands.mouseOut(d);
-					Barchart.mouseOut(d);
-	            Tooltip.hide();
+				MapNetherlands.dispatch.mouseout(d);
 			})
 	},
 

@@ -14,7 +14,6 @@ function setColorDomain(data) {
     ]);
 }
 
-
 var Barchart = {
 	width: 400,
 	height: 500,
@@ -33,6 +32,7 @@ var Barchart = {
 	yAxis: undefined,
 	xAxis: undefined,
 	svg: undefined,
+	dispatch: d3.dispatch("mouseover", "mouseout"),
 
 	initSvg: function() {
 		Barchart.heightScale = d3.scale.ordinal()
@@ -90,14 +90,10 @@ var Barchart = {
 	            }
 			})
 			.on('mouseover', function(d) {
-				MapNetherlands.mouseOver(d);
-				Barchart.mouseOver(d);
-				Tooltip.set(d);
+				Barchart.dispatch.mouseover(d);
 			})
 			.on('mouseout', function(d){
-				MapNetherlands.mouseOut(d);
-				Barchart.mouseOut(d);
-				Tooltip.hide();	
+				Barchart.dispatch.mouseout(d);
 			})
 
 		Barchart.updateWidthScale(data);
