@@ -18,11 +18,24 @@ function mergeData(data, dataset2, fn) {
 	return dataset;			
 }
 
-export default class ExampleService {
-	constructor($http) {
-    	this.$http = $http;
+var colorRange= ['#ffffcc','#ffeda0','#fed976','#feb24c','#fd8d3c','#fc4e2a','#e31a1c','#bd0026','#800026'];
+
+export default class MapNetherlandsService {
+	constructor() {
     	this.dispatch = d3.dispatch("loaded");
  	}
+
+ 	setColorDomain(color, data) {
+	    color.domain([
+	        d3.min(data, function(d) { return +d.properties.bevolking2014; }),
+	        d3.max(data, function(d) { return +d.properties.bevolking2014; })
+	    ]);
+	}
+
+	get color() {
+		return d3.scale.quantize()
+              		.range(colorRange);
+	}
 
  	getData() {
  		this.getPopulationData();
@@ -51,5 +64,3 @@ export default class ExampleService {
 		self.dispatch.loaded(geo_data, mergedData);
 	}
  }
-
-ExampleService.$inject = ['$http'];

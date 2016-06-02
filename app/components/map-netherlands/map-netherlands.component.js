@@ -4,13 +4,13 @@ import MapNetherlands from 'components/map-netherlands/map-netherlands.d3.js';
 var MapChartComponent = {
 	templateUrl: 'components/map-netherlands/map-netherlands.template.html',
 	controllerAs: 'model',
-	controller: function(ExampleService) {
+	controller: function(mapNetherlandsService) {
 
 		this.test ='tooltip test';
 
 		function init() {
-			var populationData = ExampleService.getData();
-			ExampleService.dispatch.on('loaded', initCharts);
+			var populationData = mapNetherlandsService.getData();
+			mapNetherlandsService.dispatch.on('loaded', initCharts);
 		}
 
 		function initCharts(geo_data, data) {

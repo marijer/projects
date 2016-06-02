@@ -1,19 +1,9 @@
-import Barchart from 'components/map-netherlands/barchart-netherlands.d3.js';
 import d3 from 'd3';
+import MapNetherlandsService from 'components/map-netherlands/map-netherlands.service.js';
 
-var projection = d3.geo.mercator().scale(1).translate([0,0]).precision(0);
-var path = d3.geo.path().projection(projection);
-
-var colorRange= ['#ffffcc','#ffeda0','#fed976','#feb24c','#fd8d3c','#fc4e2a','#e31a1c','#bd0026','#800026'],
-	color = d3.scale.quantize()
-              .range(colorRange);
-
-function setColorDomain(data) {
-    color.domain([
-        d3.min(data, function(d) { return +d.properties.bevolking2014; }),
-        d3.max(data, function(d) { return +d.properties.bevolking2014; })
-    ]);
-}
+var projection = d3.geo.mercator().scale(1).translate([0,0]).precision(0),
+	path = d3.geo.path().projection(projection),
+	mapService = new MapNetherlandsService();
 
 var MapNetherlands = {
  	svg: undefined,
@@ -33,7 +23,10 @@ var MapNetherlands = {
 	init: function(orig_geo_data, geo_data) {
 		MapNetherlands.renderSvg();
 
-		var bounds = path.bounds(orig_geo_data);
+		var bounds = path.bounds(orig_geo_data),
+			color =	mapService.color;
+
+		mapService.setColorDomain(color, geo_data);
 
 		var scale = .95 / Math.max((bounds[1][0] - bounds[0][0]) / MapNetherlands.width,
 		  (bounds[1][1] - bounds[0][1]) / MapNetherlands.height);
@@ -42,8 +35,6 @@ var MapNetherlands = {
 		  (MapNetherlands.height - scale * (bounds[1][1] + bounds[0][1])) / 2];
 		
 		projection.scale(scale).translate(transl);
-
-		setColorDomain(geo_data);
 
 		MapNetherlands.svg.selectAll('path')
 			.data(geo_data)

@@ -1,24 +1,12 @@
-import MapNetherlands from 'components/map-netherlands/map-netherlands.d3.js';
+import d3 from 'd3';
+import MapNetherlandsService from 'components/map-netherlands/map-netherlands.service.js';
 
-var colorRange= ['#ffffcc','#ffeda0','#fed976','#feb24c','#fd8d3c','#fc4e2a','#e31a1c','#bd0026','#800026'],
-	populationData = 'components/map-netherlands/assets/Bevolking_grootte_2014_edited.csv',
-	mapsource = "components/map-netherlands/assets/wgs84_edited.json";
-
-var color = d3.scale.quantize()
-                .range(colorRange);
-
-function setColorDomain(data) {
-    color.domain([
-        d3.min(data, function(d) { return +d.properties.bevolking2014; }),
-        d3.max(data, function(d) { return +d.properties.bevolking2014; })
-    ]);
-}
+var mapService = new MapNetherlandsService();
 
 var Barchart = {
 	width: 400,
 	height: 500,
 	topCitiesShown: 20,
-	filesource: 'components/map-netherlands/assets/Bevolking_grootte_2014_edited.csv',
 	transitionDuration: 1000,
 	selectedValue: 'bevolking2014',
 
@@ -34,7 +22,7 @@ var Barchart = {
 	svg: undefined,
 	dispatch: d3.dispatch("mouseover", "mouseout"),
 
-	initSvg: function() {
+	renderSvg: function() {
 		Barchart.heightScale = d3.scale.ordinal()
 					.rangeRoundBands([ Barchart.padding.top, Barchart.height - Barchart.padding.bottom ], 0.2);
 	
@@ -59,10 +47,12 @@ var Barchart = {
 	},
 
 	init: function(data) {
-		Barchart.initSvg();
+		Barchart.renderSvg();
 		data = Barchart.removeEmptyValues(data);
 		data = Barchart.sortData(data);
 		data = Barchart.filterData(data, Barchart.topCitiesShown);
+
+		var color = mapService.color;
 
 		Barchart.heightScale.domain(data.map(function(d) { return d.properties.GM_NAAM; } ));
 
@@ -82,7 +72,7 @@ var Barchart = {
 					return 'bar ' + d.properties.GM_CODE;
 				},
 			    fill: function(d) { 
-	            	if(d.properties.bevolking2014){
+	            	if (d.properties.bevolking2014) {
 	            		return color(d.properties.bevolking2014);
 	            	} else {
 	            		return 'yellow';
