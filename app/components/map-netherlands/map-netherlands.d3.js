@@ -30,10 +30,10 @@ var MapNetherlands = {
 						.attr('height', MapNetherlands.height);
 	},
 
-	init: function(geo_data) {
+	init: function(orig_geo_data, geo_data) {
 		MapNetherlands.renderSvg();
 
-		var bounds = path.bounds(MapNetherlands.orig_geo_data);
+		var bounds = path.bounds(orig_geo_data);
 
 		var scale = .95 / Math.max((bounds[1][0] - bounds[0][0]) / MapNetherlands.width,
 		  (bounds[1][1] - bounds[0][1]) / MapNetherlands.height);
