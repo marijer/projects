@@ -1,12 +1,12 @@
 import Barchart from 'components/map-netherlands/barchart-netherlands.d3.js';
 import MapNetherlands from 'components/map-netherlands/map-netherlands.d3.js';
+import mapTooltip from 'components/map-netherlands/map-netherlands.tooltip.js'
 
 var MapChartComponent = {
 	templateUrl: 'components/map-netherlands/map-netherlands.template.html',
 	controllerAs: 'model',
-	controller: function(mapNetherlandsService) {
-
-		this.test ='tooltip test';
+	controller: function($scope, mapNetherlandsService) {
+		var model = this;
 
 		function init() {
 			var populationData = mapNetherlandsService.getData();
@@ -24,15 +24,23 @@ var MapChartComponent = {
 		}
 
 		function componentMouseOver(d) {
+			model.tooltipVisible = true;
 			MapNetherlands.mouseOver(d);
 			Barchart.mouseOver(d);
-			//	Tooltip.set(d);
+			model.tooltipContent = mapTooltip.get(d);
+
+			model.tooltipXPos = event.pageX;
+			model.tooltipYPos = event.pageY;
+
+			$scope.$apply();
 		}
 
 		function componentMouseOut(d) {
 			MapNetherlands.mouseOut(d);
 			Barchart.mouseOut(d);
-			//Tooltip.hide()
+			model.tooltipVisible = false;
+
+			$scope.$apply();
 		}
 
 		init();
