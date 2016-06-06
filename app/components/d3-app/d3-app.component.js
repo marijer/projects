@@ -30,6 +30,6 @@ module
 	.component('barChart', Barchart)
 	.component('areaChart', Areachart)
 	.component('mapChart', Mapchart)
-	.component('tooltipExample', Tooltip)
+	.component('tooltip', Tooltip)
 	.service('mapNetherlandsService', MapNetherlandsService);
 

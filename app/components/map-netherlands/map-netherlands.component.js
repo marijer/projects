@@ -1,6 +1,6 @@
-import Barchart from 'components/map-netherlands/barchart-netherlands.d3.js';
-import MapNetherlands from 'components/map-netherlands/map-netherlands.d3.js';
-import mapTooltip from 'components/map-netherlands/map-netherlands.tooltip.js'
+import Barchart from './barchart-netherlands.d3.js';
+import MapNetherlands from './map-netherlands.d3.js';
+import mapTooltip from './map-netherlands.tooltip.js';
 
 var MapChartComponent = {
 	templateUrl: 'components/map-netherlands/map-netherlands.template.html',

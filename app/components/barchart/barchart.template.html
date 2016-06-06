@@ -10,5 +10,9 @@
 	<a href="http://data.worldbank.org/indicator/SM.POP.REFG.OR/" target="_blank">Worldbank, 2015</a>
 </div>
 
-<div id="tooltip" class="none"></div>
-
+<div ng-show="model.tooltipVisible">
+	<tooltip tooltip-x-pos="model.tooltipXPos"
+			tooltip-y-pos="model.tooltipYPos">
+		<div ng-bind-html="model.tooltipContent"></div>
+	</tooltip>
+</div>
