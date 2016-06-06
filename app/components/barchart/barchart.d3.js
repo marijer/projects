@@ -91,6 +91,10 @@ var Barchart = function(config) {
 		dispatch.mouseover(d);
 	}
 
+	function mouseOut() {
+		dispatch.mouseout();
+	}
+
 	this.getYears = function() {
 		return years;
 	}
@@ -99,9 +103,6 @@ var Barchart = function(config) {
 		return currentYear;
 	}
 
-	function mouseOut() {
-		dispatch.mouseout();
-	}
 
 	function filterData(data) {
 		data.sort(function(a, b) {

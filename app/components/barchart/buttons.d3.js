@@ -5,7 +5,6 @@ var Buttons = function() {
 	function btnClick(d) {
 		d3.select(".btn.active").classed("active", false);
 		d3.select(this).classed("active", true);
-		//updateBarChart(d);
 
 		dispatch.btnClick(d);
 	}

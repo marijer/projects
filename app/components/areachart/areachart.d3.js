@@ -1,28 +1,25 @@
-var AreaChart = function() {
+var AreaChart = function(config) {
 
-	function getClientWidth() {
-		return document.getElementsByClassName("content-wrapper")[0].clientWidth;
-	}
 	var country_code;
 
-	var filepath = 'components/areachart/assets/data_refugee_by_origin.csv';
-	var startYear = 1990;
-	var endYear = 2014;
-	var years = createYearsArr(startYear, endYear);
+	var filepath = config.datasource,
+		startYear = config.startYear,
+		endYear = config.endYear,
+		years = createYearsArr(startYear, endYear);
 
-	var w = 940;
-	var h = 400;
+	var w = 940,
+		h = 400;
 
-	var sw = 300;
-	var sh = 200;
+	var sw = 300,
+		sh = 200;
 
 	var padding = { top:40, 
 				right: 0, 
 				bottom: 30, 
 				left: 40 };
 
-	//Set up date formatting and years
-	var dateFormat = d3.time.format("%Y");
+	var dispatch = d3.dispatch("mouseover", "mouseout");
+	this.dispatch = dispatch;
 
 	var stack = d3.layout.stack()
 					.values(function(d) {
@@ -165,32 +162,8 @@ var AreaChart = function() {
 					setColor(d.continent);
 					return color(i);
 				})
-				.on("mouseover", function(d) {
-
-					//Get this bar's x/y values, then augment for the tooltip
-					var xPosition = (d3.event.pageX);
-					var yPosition = (d3.event.pageY - 28);
-
-					var content = getTooltipContent(d);
-
-					d3.select(this)
-	                	.classed('hover', true);
-
-					//Update the tooltip position and value
-					d3.select("#tooltip")
-					  .style("left", xPosition + "px")
-					  .style("top", yPosition + "px")
-					  .html(content);
-
-					//Show the tooltip
-					d3.select("#tooltip").classed("none", false);
-				})
-				.on("mouseout", function() {
-					d3.select("#tooltip").classed("none", true);
-
-					d3.select(this)
-	                	.classed('hover', false);
-				});
+				.on('mouseover', mouseOver)
+				.on('mouseout', mouseOut);
 
 			continent.append("g")
 				.attr("class", "x axis")
@@ -201,10 +174,23 @@ var AreaChart = function() {
 				.attr("class", "y axis")
 				.attr("transform", "translate(" + padding.left + ",0)")
 				.call(yAxis);
-	}	
+	}
+
+	function mouseOver(d) {
+		dispatch.mouseover(d);
+
+		d3.select(this)
+		.classed('hover', true);
+	}
+
+	function mouseOut() {
+		dispatch.mouseout();
+
+		d3.select(this)
+			.classed('hover', false);
+	}
 
 	initMetaData();
-
 
 	/* helper functions - need to clean up here */
 
@@ -289,11 +275,6 @@ var AreaChart = function() {
 
 	function onlyUnique(value, index, self) { 
 	    return self.indexOf(value) === index;
-	}
-
-	function getTooltipContent(data) {
-		var html = '<div class="tooltip-label">' + data.country + '</h1>';
-		return html;
 	}
 
 	function filterData(data, continent) {

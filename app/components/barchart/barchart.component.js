@@ -35,7 +35,7 @@ var BarChart = {
 			buttons.dispatch.on('btnClick', onBtnClick);
 		}
 
-		function componentMouseOver(data, year, currentYear) {
+		function componentMouseOver(data) {
 			var years = chart.getYears(),
 				currentYear = chart.getCurrentYear();
 
