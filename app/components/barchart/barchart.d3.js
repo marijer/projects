@@ -1,12 +1,14 @@
 import d3 from 'd3';
 
 var Barchart = function(config) {
+	var self = this;
+
 	var dataUrl = config.dataUrl,
 		htmlHook = config.htmlHook,
-		years = config.years;
+		years = config.years,
+		currentYear = config.selectedYear;
 
-	var	currentYear = years[years.length - 1],
-		totalShown = 20,
+	var totalShown = 20,
 		transitionDuration = 1200,
 		dataset;
 
@@ -50,10 +52,9 @@ var Barchart = function(config) {
 	}
 
 	function initChart(data) {
+		var filtered_data = filterData(data);
+
 		dataset = data;
-
-	    var filtered_data = filterData(data);
-
 		updateWidthScale(filtered_data);
 
 		heightScale.domain(filtered_data.map(function(d) { return d.Country; } ));
@@ -73,7 +74,7 @@ var Barchart = function(config) {
 			.on('mouseover', mouseOver)
 			.on('mouseout', mouseOut);
 
-		updateBarChart(currentYear);
+		self.update(currentYear);
 
 		svg.append("g")
 			.attr("class", "x axis")
@@ -144,35 +145,10 @@ var Barchart = function(config) {
 	function resize() {
 		updateWidth();
 		updateXAxis();
-		updateBarChart(currentYear);		
+		self.update(currentYear);		
 	}
 
-	function initButtons() {
-		var btn = d3.select('#button-wrapper')
-				.append('div');
-		
-		btn.selectAll('div')
-			.data(years)
-			.enter()
-			.append('button')
-			.attr('type', 'button')
-			.attr('class', function(d){
-				var className='btn';
-
-				if (d === currentYear) {
-					className += ' active';
-				}
-				return className;
-			})
-			.text(function(d){ return d; })
-			.on('click', function(d) {
-				d3.select(".btn.active").classed("active", false);
-				d3.select(this).classed("active", true);
-				updateBarChart(d);
-			})
-	}
-
-	function updateBarChart(year) {
+	this.update = function(year) {
 		currentYear = year;
 
 		svg.selectAll("rect")
@@ -185,7 +161,6 @@ var Barchart = function(config) {
 
 	loadData();
 
-	initButtons();
 	d3.select(window).on('resize', resize);
 };
 
