@@ -8,7 +8,9 @@ var MapChartComponent = {
 	controller: function($scope, mapNetherlandsService) {
 		var model = this;
 
-		function init() {
+		//TODO - need to fix the colors
+
+		model.$onInit = function() {
 			var populationData = mapNetherlandsService.getData();
 			mapNetherlandsService.dispatch.on('loaded', initCharts);
 		}
@@ -42,9 +44,6 @@ var MapChartComponent = {
 
 			$scope.$apply();
 		}
-
-		init();
-
 	}
 }
 

@@ -8,6 +8,7 @@ import Areachart from '../areachart/areachart.component.js';
 import Mapchart from '../map-netherlands/map-netherlands.component.js';
 import Tooltip from 'common/tooltip/tooltip.component.js';
 import MapNetherlandsService from 'components/map-netherlands/map-netherlands.service.js';
+import AreaChartService from 'components/areachart/areachart.service.js';
 
 var module = angular.module('d3Assignments', ['ngComponentRouter', 'ngSanitize']);
 
@@ -31,5 +32,6 @@ module
 	.component('areaChart', Areachart)
 	.component('mapChart', Mapchart)
 	.component('tooltip', Tooltip)
-	.service('mapNetherlandsService', MapNetherlandsService);
+	.service('mapNetherlandsService', MapNetherlandsService)
+	.service('areaChartService', AreaChartService);
 

@@ -1,17 +1,15 @@
 var AreaChart = function(config) {
 
-	var country_code;
-
-	var filepath = config.datasource,
-		startYear = config.startYear,
+	var startYear = config.startYear,
 		endYear = config.endYear,
-		years = createYearsArr(startYear, endYear);
-
-	var w = 940,
-		h = 400;
-
-	var sw = 300,
-		sh = 200;
+		svgHook = config.htmlHook,
+		label = config.label,
+		dataset = config.dataset,
+		years = config.years,
+		size = {
+			w: config.width,
+			h: config.height
+		};
 
 	var padding = { top:40, 
 				right: 0, 
@@ -32,10 +30,10 @@ var AreaChart = function(config) {
 
 	//Set up scales
 	var xScale = d3.time.scale()
-						.range([ padding.left, sw - padding.right ]);
+					.range([ padding.left, size.w - padding.right ]);
 
 	var yScale = d3.scale.linear()
-					.range([ padding.top, sh - padding.bottom ]);
+					.range([ padding.top, size.h - padding.bottom ]);
 
 	//Configure axis generators
 	var xAxis = d3.svg.axis()
@@ -66,45 +64,7 @@ var AreaChart = function(config) {
 	var color = d3.scale.ordinal()
 				.range(colorbrewer.Spectral[8]);
 
-	var aggregateCountries = ['ARB', 'CEB', 'CSS','ECA', 'EAP', 'EAS', 'ECS', 'EMU', 'EUU', 'FCS', 'HIC', 'HPC', 'LAC', 'LCN', 'LDC', 'LIC', 'LMC', 'LMY', 'MEA', 'MIC', 'MNA', 'NAC', 'NOC', 'OEC', 'OED', 'OSS', 'PSS', 'SAS', 'SSA', 'SSF', 'SST', 'UMC', 'WLD'];
-
-	function initMetaData() {
-		d3.csv('components/areachart/assets/country_code.csv', function(data) { 
-			country_code = data;
-			initData(filepath);
-		});
-	}
-
-	function initData(dataPath) {
-		d3.csv(dataPath, function(data) { 
-			data = data.filter(function(d) {
-					for(var i = 0; i < aggregateCountries.length; i++) {
-						if(d.Code === aggregateCountries[i]) { return false; }
-					}
-					return true;
-			});
-
-			var dataset = transformData(data);
-			createAreaChart('WORLD', dataset, '#main-chart-hook', {w: w, h: h});
-
-			createSmallMultiples(dataset);
-		});
-	}
-
-	function createSmallMultiples(dataset) {
-		var uniqueContinents = getUniqueContinents(country_code);
-
-		// create small multiples
-		for (var i = 0; i < uniqueContinents.length; i++) {
-			// lets skip the arctic
-			if(uniqueContinents[i] === 'ARCTIC'){ return false; }
-
-			var filteredData = filterData(dataset, uniqueContinents[i]);
-			createAreaChart(uniqueContinents[i], filteredData, '#small-multiples-hook', {w: sw, h: sh});
-		}
-	}
-
-	function createAreaChart(selectedContinent, dataset, svgHook, size) {
+	function createAreaChart() {
 
 		var totalTicksX = Math.round(size.w / 40),
 			totalTicksY = Math.round(size.h / 40);
@@ -117,7 +77,7 @@ var AreaChart = function(config) {
 
 		var continent = d3.select(svgHook)
 			      .append("svg")
-			      .attr("class", "continent " + selectedContinent)
+			      .attr("class", "continent " + label)
 			      .attr("width", size.w)
 			      .attr("height", size.h);
 
@@ -125,7 +85,7 @@ var AreaChart = function(config) {
 	        .attr("x", (10))             
 	        .attr("y", padding.top/2)
 	        .attr("class", "multiples-title")  
-	        .text(selectedContinent.toLowerCase());
+	        .text(label.toLowerCase());
 
 		stack(dataset);
 
@@ -190,7 +150,7 @@ var AreaChart = function(config) {
 			.classed('hover', false);
 	}
 
-	initMetaData();
+	createAreaChart();
 
 	/* helper functions - need to clean up here */
 
@@ -223,73 +183,6 @@ var AreaChart = function(config) {
 		}
 
 		color.range(brewer);
-	}
-
-	function createYearsArr(start, end) {
-		var arr = [];
-		for (var i = start; i <= end; i++ ) {
-			arr.push(String(i));
-		}
-		return arr;
-	}
-
-	function transformData(data) {
-		var dataset = [];
-		for (var i = 0; i < data.length; i++) {
-
-			var continentArr = country_code.filter(function(d, index){
-				if (!d.iso3_code || !data[i]) {
-					return false;
-				}
-				return d.iso3_code === data[i].Code 
-			});
-
-			var continent = continentArr[0] ? continentArr[0].continent : undefined;
-
-			dataset[i] = {
-				country: data[i].Country,
-				values: [],
-				total: 0,
-				continent: continent
-			};
-
-			for (var j = 0; j < years.length; j++) {
-
-				//Default value, used in case no value is present
-				var amount = 0;
-
-				// If value is not empty
-				if (data[i][years[j]]) {
-					amount = +data[i][years[j]];
-					dataset[i].total += amount;
-				}
-
-				dataset[i].values.push({
-					x: years[j],
-					y: amount
-				});
-			}
-		}
-		return dataset;
-	}
-
-	function onlyUnique(value, index, self) { 
-	    return self.indexOf(value) === index;
-	}
-
-	function filterData(data, continent) {
-		data = data.filter(function(d, i) {
-		    if( d.continent === continent) { 
-		    	return true; 
-		    }
-		});
-		return data;
-	};
-
-	function getUniqueContinents(data){
-		var continents = country_code.map(function(obj) { return obj.continent; });
-		var uniqueContinents = continents.filter(onlyUnique);
-		return uniqueContinents;
 	}
 }
 
