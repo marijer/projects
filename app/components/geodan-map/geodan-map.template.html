@@ -1,1 +1,34 @@
-<h1>Geodan maps</h1>
+<div id='map'></div>
+
+<div class='content' scroll>
+
+	<!-- making an exception here for geodan, mostly done to have a distinction between the company and clients -->
+	<article id='0' 
+			ng-class="{active: isActive(0)}" 
+			class="story intro">
+		<a ng-href='{{model.geodan.url}}' 
+			target='_blank'>
+			<img ng-src='img/logos/{{model.geodan.img}}' class='logo'>
+		</a>
+		<p ng-repeat='c in model.geodan.content'>
+			{{c}}
+		</p>
+		<div class='label scroll'>scroll</div>
+	</article>
+
+	<h3>Klanten</h3>
+
+	<article id={{model.client.name}} 
+			ng-repeat="client in model.clients" 
+			ng-class="{active: isActive($index + 1)}" 
+			class="story">
+		<h1>{{client.name}}</h1>
+		<p ng-repeat='c in client.content'>
+			{{ c }}
+		</p>
+		<a ng-href="{{client.url }}" 
+			target="_blank">
+			lees meer
+		</a>
+	</article>
+</div>

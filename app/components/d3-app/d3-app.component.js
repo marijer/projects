@@ -13,6 +13,7 @@ import Tooltip from 'common/tooltip/tooltip.component.js';
 
 import MapNetherlandsService from 'components/map-netherlands/map-netherlands.service.js';
 import AreaChartService from 'components/areachart/areachart.service.js';
+import GeodanMapService from 'components/geodan-map/geodan-map.service.js';
 
 var module = angular.module('d3Assignments', ['ngComponentRouter', 'ngSanitize']);
 
@@ -41,5 +42,6 @@ module
 	.component('geodanMap', GeodanMap)
 	.component('tooltip', Tooltip)
 	.service('mapNetherlandsService', MapNetherlandsService)
-	.service('areaChartService', AreaChartService);
+	.service('areaChartService', AreaChartService)
+	.service('geodanMapService', GeodanMapService)
 

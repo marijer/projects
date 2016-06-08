@@ -1,0 +1,90 @@
+
+.angular-leaflet-map {
+    width: 640px;
+    height: 480px;
+}
+
+#map {
+	width: 100%; 
+	height: 100%; 
+	position: fixed;
+	background: #E0E0E0;
+}
+
+.content {
+	position: absolute;
+	margin: 40px 0 0 0;
+	min-width: 320px;
+	width: 33.33%;
+	padding-bottom: 33%;
+}
+
+.story {
+	padding: 10px 20px;
+	margin: 0 0 60px 40px;
+	opacity: .2;
+	transition: background 0.5s ease;
+	transition: opacity .4s ease-in;
+}
+
+
+.story.active{
+	background: #FFF;
+	border-top: 5px solid #e41e26;
+	opacity: 1;
+	box-shadow: 0px 1px 2px rgba(1,1,1,0.17);
+}
+
+.story.intro {
+	border-top: none;
+	margin-bottom: 40px;
+}
+
+.intro .logo{
+	margin-top: 10px;
+}
+
+.scroll {
+	text-align: right;
+	font-size: .8em;
+	color: #808080;
+}
+
+.scroll:after{
+	content: '▼';
+	padding-left: 3px;
+	font-size: .8em;
+	color: #3DBCC0;
+}
+
+@media (max-width: 640px){
+	h3{
+		display: none;
+	}
+
+	.content { 
+			width: 100%;
+			min-width: 100%;
+			padding-top: 0px;
+			padding-bottom: 200%;
+			margin: 0;
+	}
+
+	.story {
+		opacity: 0;
+		transition: background 0s ease;
+		transition: opacity 0s ease-in;
+
+	}
+
+	.story.active{
+		visibility: visible;
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		margin: 0;
+		opacity: 1;
+		z-index: 1;
+	}
+}

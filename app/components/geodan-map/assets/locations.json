@@ -1,0 +1,77 @@
+{
+  "geodan": [
+      {
+        "name": "Geodan",
+        "img": "geodan_logo.png",
+        "url": "http://www.geodan.nl/geodan/profiel/",
+        "zoom": 12,
+        "coord": [{
+            "lat" : 52.342661,
+            "long" : 4.913185
+          },
+          {
+            "lat" : 51.691724,
+            "long" : 5.299500
+        }],
+        "content": [
+              "Geo-informatie is van ons allemaal. Het online in kaart brengen van ondergrondse kabels en leidingen, het zoeken van de dichtstbijzijnde winkel op internet, het lokaliseren van apparatuur, het vorm en richting geven aan nieuwe, ruimtelijke ontwikkelingen: zonder ruimtelijke informatie zijn we nergens.",
+              "De vraag naar geo-producten en -diensten, maar ook de vraag naar inhoudelijke analyse van geo-informatie voor planvorming groeit voortdurend. En daarmee de behoefte aan mensen die thuis zijn in de wereld van geo-informatie: de specialisten van Geodan."
+            ]
+      }
+  ],
+
+    "clients": [
+    {
+      "name": "ProRail",
+      "img": "loc",
+      "url": "http://sitestaging.geodan.nl/oplossingen/incidentmanagementsysteem-prorail/",
+      "coord": [{
+        "lat" : 52.081903,
+        "long" : 5.115544
+      }],
+      "content": [
+        "ProRail is verantwoordelijk voor het spoorwegnet van Nederland: aanleg, onderhoud, beheer en veiligheid. Het bedrijf heeft te maken met duizenden incidenten per jaar die zo snel mogelijk worden opgelost zodat het spoor weer snel vrijkomt en vertraging wordt beperkt.",
+        "Het incidentmanagementsysteem dat Geodan bij ProRail implementeert bestaat uit de Eagle Crisis Management Suite van Geodan in combinatie met NICE Situator van NICE Systems. Dit nieuwe systeem maakt deel uit van de standaard werkprocessen bij ProRail en kan een groot scala aan verschillende typen incidenten managen."
+      ]
+    },
+    {
+      "name": "TNO",
+      "img": "loc",
+      "url": "",
+      "coord": [{
+        "lat" : 52.087432,
+        "long" : 4.324827
+      }],
+      "content": [
+        "Met de nieuwste technologieën en geo-informatie werken TNO en Geodan samen aan innovaties op ruimtelijk gebied. Bijvoorbeeld in projecten op het gebied van de informatievoorziening over energie en minerale hulpbronnen. Ook werken we samen aan de duurzame bebouwing en inrichting van beschikbare ruimte om comfortabel te kunnen leven in een dichtbevolkt land.",
+        "Door de koppeling van het ruimtelijk rekenmodel Urban Strategy (TNO) met de eenvoudig bedienbare touch table applicatie Phoenix (Geodan), kunnen diverse stakeholders op een makkelijke en laagdrempelige manier betrokken worden bij verschillende duurzaamheidsvraagstukken."
+      ]
+    },
+    {
+      "name": "Kadaster",
+      "img": "loc",
+      "url": "http://www.geodan.nl/het-kadaster-een-blik-op-de-toekomst",
+      "coord": [{
+        "lat" : 52.179973,
+        "long" : 5.959669
+      }],
+      "content": [
+        "Bij de aankoop van een huis krijgt iedereen er mee te maken: het Kadaster. Maar het Kadaster doet meer dan beheer en registratie van kadastrale gegevens. De data die zij gebruiken worden steeds meer verrijkt met informatie van derden. Dit wordt gebruikt voor een hoop nuttige maar ook leuke toepassingen."
+      ]
+    },
+      {
+      "name": "Vrije Universiteit Amsterdam",
+      "img": "loc",
+      "url": "http://www.geodan.nl/research/",
+      "coord": [{
+        "lat" : 52.334475,
+        "long" : 4.865830
+      }],
+      "content":[
+        "Wetenschap en praktijk versterken elkaar. Dat is de gedachte achter de intensieve samenwerking en kennisuitwisseling tussen Geodan en het SPINlab van de Vrije Universiteit Amsterdam (VU). Het SPINlab is het GIS onderzoekscentrum van de VU. Geodesign, EduGIS, het Geomarketing Kenniscentrum (GKC) en de touch table zijn enkele concepten die voortvloeien uit de samenwerking tussen Geodan en de VU.",
+        "Daarnaast vinden medewerkers van Geodan en onderzoekers van het SPINlab elkaar middels gezamenlijke congressen, promotietrajecten en onderwijsactiviteiten."
+      ]
+    }
+  ]
+}
+
