@@ -21,8 +21,7 @@
 	},
 	{
 		"name": "Klanten bij Geodan",
-		"img": "leaflet-geodan.jpg",
-		"routeName": "Leaflet-geodan"
-	},
-
+		"img": "geodan-map.jpg",
+		"routeName": "Geodan-map"
+	}
 ]

@@ -7,6 +7,7 @@ import Barchart from '../barchart/barchart.component.js';
 import Areachart from '../areachart/areachart.component.js';
 import Mapchart from '../map-netherlands/map-netherlands.component.js';
 import Treechart from '../treechart/treechart.component.js';
+import GeodanMap from '../geodan-map/geodan-map.component.js';
 
 import Tooltip from 'common/tooltip/tooltip.component.js';
 
@@ -26,6 +27,7 @@ module.component('d3App', {
 	 	{ path: '/refugee-population-by-country-of-origin', component: 'areaChart', name: 'Refugees-areachart'},
 	 	{ path: '/where-do-people-in-the-netherlands-live', component: 'mapChart', name: 'Municipalities-mapchart'},
 	 	{ path: '/flow-experiment', component: 'treeChart', name: 'Flow-experiment'},
+	 	{ path: '/geodan-map', component: 'geodanMap', name: 'Geodan-map'},
 	 	{ path: '/**', redirectTo: ['Home']}
 	]
 });
@@ -36,6 +38,7 @@ module
 	.component('areaChart', Areachart)
 	.component('mapChart', Mapchart)
 	.component('treeChart', Treechart)
+	.component('geodanMap', GeodanMap)
 	.component('tooltip', Tooltip)
 	.service('mapNetherlandsService', MapNetherlandsService)
 	.service('areaChartService', AreaChartService);
