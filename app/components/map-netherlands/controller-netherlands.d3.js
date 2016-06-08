@@ -16,8 +16,8 @@ var Tooltip = {
 	},
 
 	updateContent: function(title, content) {
-		var html = '<div class="tooltip-label">' + title + '</div>';
-		html += '<div class="tooltip-content">population 2014: <span class="tooltip-num">' + content + '</span></div>';
+		var html = '<div class="tooltip-label">' + title + '</div>' + 
+					'<div class="tooltip-content">population 2014: <span class="tooltip-num">' + content + '</span></div>';
 		
 		d3.select("#tooltip").html(html);
 	},
