@@ -1,7 +1,7 @@
 <div class="items-wrapper">
 	<ul class="item-list">
 		<li ng-repeat="item in model.list"
-			ng-link="[item.path]"
+			ng-link="[item.routeName]"
 			class="item pointer">
 			<img class="item-img" ng-src="components/overview-list/assets/{{item.img}}">
 			<div class="item-name">{{item.name}}</div>

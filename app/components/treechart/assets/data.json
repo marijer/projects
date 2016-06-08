@@ -1,0 +1,50 @@
+{
+    "name": "Incident",
+    "title": "",
+    "children": [{
+        "name": "Wat?",
+        "title": "Wat is er gebeurd?",
+        "html": {
+            "element": "input",
+            "placeholder": "incident",
+            "name": "incident",
+            "type": "text"
+        },
+        "children": [{
+            "name": "Lokatie",
+            "title": "Waar is het incident gebeurd?",
+            "html": {
+                "element": "input",
+                "placeholder": "lokatie",
+                "name": "lokatie",
+                "type": "text"
+            },
+            "children": [{
+                "name": "Tijd",
+                "title": "Wanneer is het incident gebeurd?",
+                "html": {
+                    "element": "currentTime",
+                    "name": "tijd",
+                    "type": "text"
+                },
+                "children": [{
+                    "name": "Slactoffers",
+                    "title": "Zijn er slachtoffers?",
+                    "children": [{
+                        "name": "Ja",
+                        "title": "Zijn er slachtoffers?",
+                        "html": {
+                            "element": "input",
+                            "type": "number",
+                            "placeholder": "Aantal slachoffers",
+                            "name": "slachtoffers"
+                        }
+                    }, {
+                        "name": "Nee",
+                        "title": "Zijn er slachtoffers?"
+                    }]
+                }]
+            }]
+        }]
+    }]
+}

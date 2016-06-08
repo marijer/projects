@@ -2,16 +2,27 @@
 	{
 		"name": "Refugee population by country",
 		"img": "refugees-barchart.jpg",
-		"path": "Refugees-barchart"
+		"routeName": "Refugees-barchart"
 	},
 	{
 		"name": "Refugee population by country of origin",
 		"img": "refugees-areachart.jpg",
-		"path": "Refugees-areachart"
+		"routeName": "Refugees-areachart"
 	},
 	{
 		"name": "Where do people in the Netherlands live?",
 		"img": "netherlands-map.jpg",
-		"path": "Municipalities-mapchart"
-	}
+		"routeName": "Municipalities-mapchart"
+	},
+	{
+		"name": "Flow experiment",
+		"img": "flow-experiment.jpg",
+		"routeName": "Flow-experiment"
+	},
+	{
+		"name": "Klanten bij Geodan",
+		"img": "leaflet-geodan.jpg",
+		"routeName": "Leaflet-geodan"
+	},
+
 ]

@@ -1,0 +1,131 @@
+h3.summary{
+	display:inline-block;
+	 padding-right: 10px;
+}
+
+.summary-line .value{
+  border-bottom: 1px dashed #494949;
+  color: #494949;
+  padding: 2px 2px;
+  transition: background .2s linear;
+  cursor: pointer;
+}
+
+.summary-line .value:hover{
+  background: #EDEDED;
+  border-radius: 2px;
+}
+
+#content-wrapper {
+	overflow: hidden;
+	width: 960px;
+	margin: 0 auto;
+}
+
+.summary-wrapper {
+	float: right;
+	border-left: 1px solid #D6D6D6;
+	padding-left: 2%;
+	margin-left: 2%;
+	min-height:350px;
+	width: 252px;
+}
+
+.info-wrapper .inner-wrapper{
+	overflow-y: hidden;
+}
+
+
+.sub-content-wrapper{
+	margin: 20px 20px 10px;
+}
+
+input{
+	  padding: 7px;
+}
+
+.default-input {
+  width: 250px;
+}
+
+.time-input {
+  width: 75px;
+  margin-right: 20px;
+}
+
+.string, .regexp {
+  color: #f39;
+}
+
+.keyword {
+  color: #00c;
+}
+
+.hint.hidden {
+	display: none;
+}
+
+.left-wrapper {
+	height: 100%;
+	float: left;
+	position: relative;
+}
+
+.hint {
+	position: absolute;
+	width: 300px;
+	border: 1px solid #FDEFCC;
+	border-radius: 8px;
+	padding: 20px;
+	margin: 10% 30%;
+	color: #2E2E2E;
+	font-size: 1em;
+	background-color: #FFFFE0;
+	line-height: 1.3em;
+}
+
+.node {
+  cursor: pointer;
+}
+
+.node circle {
+  cursor: pointer;
+  fill: #fff;
+  stroke: #0896FF;
+  stroke-width: 1px;
+}
+
+.node text {
+  font-size: 12px;
+  fill: #252525;
+}
+
+.node:hover text {
+	fill: #FEBA02;
+}
+
+.node circle.children {
+	fill: #58E6FB;
+}
+
+.node circle {
+	fill : #FFF;
+}
+
+.node.selected circle {
+	fill : #FDC255;
+}
+
+.node.right circle.expanded {
+	stroke: #FDC255;
+}
+
+.node.selected text {
+	font-weight: 500;
+}
+
+path.link {
+  fill: none;
+  stroke: #DFDFDF;
+	stroke-width: 1.2px;
+}
