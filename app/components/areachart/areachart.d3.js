@@ -12,9 +12,10 @@ var AreaChart = function(config) {
 		};
 
 	var padding = { top:40, 
-				right: 0, 
-				bottom: 30, 
-				left: 40 };
+					right: 0, 
+					bottom: 30, 
+					left: 40 
+			};
 
 	var dispatch = d3.dispatch("mouseover", "mouseout");
 	this.dispatch = dispatch;
@@ -29,11 +30,8 @@ var AreaChart = function(config) {
 	var dateFormat = d3.time.format("%Y");
 
 	//Set up scales
-	var xScale = d3.time.scale()
-					.range([ padding.left, size.w - padding.right ]);
-
-	var yScale = d3.scale.linear()
-					.range([ padding.top, size.h - padding.bottom ]);
+	var xScale = d3.time.scale();
+	var yScale = d3.scale.linear();
 
 	//Configure axis generators
 	var xAxis = d3.svg.axis()
