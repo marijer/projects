@@ -6,8 +6,8 @@ html, body {
 * { outline: none; }
 
 body {
-	font-family: Helvetiva, Arial;
 	background: #FFF;
+	font: normal 15px/22px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h1, h2, h3 {
@@ -41,6 +41,10 @@ a {
 .header {
     background: #40CAFF;
     margin-bottom: 10px;
+    position: fixed;
+    width: 100%;
+
+    z-index: 1000;
 }
 
 .main-logo {
@@ -55,7 +59,7 @@ a {
 }
 
 .container {
-	padding: 10px 20px;
+	padding: 50px 20px 10px;
 }
 
 .item-list {
@@ -67,7 +71,7 @@ a {
 	flex: 1 1 auto;
 	padding: 10px;
 	margin: 10px;
-	max-width: 320px;
+	max-width: 300px;
 
 	background: #FFF;
     border: 1px solid #CCC;

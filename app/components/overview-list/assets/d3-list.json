@@ -20,8 +20,8 @@
 		"routeName": "Flow-experiment"
 	},
 	{
-		"name": "Klanten bij Geodan",
-		"img": "geodan-map.jpg",
+		"name": "Geodan loves maps",
+		"img": "geodan_maps.jpg",
 		"routeName": "Geodan-map"
 	}
 ]
